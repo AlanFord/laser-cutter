@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="utf-8"?>
+<PostProcessor xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" Version="0.9.8.0">
+  <PostFile>{$comment} Mach3 HackRVA Laser Code {$endcomment}
+{$comment} Chris' Circuits - http://ChrisCircuits.com {$endcomment}
+{$comment} Kitchen Sink Electronics - http://KitchenSinkElectronics.com {$endcomment}
+{$header}
+{$mops}
+{$footer}
+</PostFile>
+  <Header>{$comment} {$cbfile.name} {$date} {$endcomment}
+{$tooltable}
+{$cbfile.header}
+{$units} {$distancemode} {$arccentermode} {$velocitymode} {$cuttercomp(off)}
+{$toolchange(first)}
+{$clearance}
+M8</Header>
+  <Footer>M10P1
+G0
+G1 X0.2  Y0.2  
+G1 X0.00 Y0.00  
+M5
+{$clearance}
+{$spindle(off)}
+M9
+{$endrewind}
+{$cbfile.footer}
+</Footer>
+  <StartCut>M11P1
+  </StartCut>
+  <EndCut>M10P1
+  </EndCut>
+  <ToolChange>{$clearance}
+{$comment} T{$tool.index} : {$tool.diameter} {$endcomment}
+T{$tool.index} M6</ToolChange>
+  <MOP>{$comment} {$mop.name} {$endcomment}
+{$toolchange}
+{$velocitymode} {$workplane}
+{$mop.header}
+{$s}
+{$blocks}
+{$clearance}
+{$mop.footer}
+</MOP>
+  <SpindleCW />
+  <SpindleCCW />
+  <Rapid>{$g0} {$_f} {$_x} {$_y}</Rapid>
+  <FeedMove>{$g1} {$_f} {$_x} {$_y}</FeedMove>
+  <ArcCW>{$g2} {$_f} {$_x} {$_y} {$i} {$j} {$k}</ArcCW>
+  <ArcCCW>{$g3} {$_f} {$_x} {$_y} {$i} {$j} {$k}</ArcCCW>
+  <Drill />
+  <DrillDwell />
+  <DrillPeck />
+  <MinimumArcLength>0.0001</MinimumArcLength>
+  <ArcCenterIncremental>G91.1</ArcCenterIncremental>
+  <ArcCenterAbsolute>G90.1</ArcCenterAbsolute>
+</PostProcessor>
