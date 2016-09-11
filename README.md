@@ -5,6 +5,8 @@ This repository contains the configuration files necessary to run HackRVA's lase
 
 The Mach3 configiration files are used when controlling laser operation with Mach3.
 
+The Drawings folder contains key drawings used to assemble the laser cutter.  The collection isn't complete yet, but it's a start.  The folder contains a drawing index (see !drawing-index.csv).
+
 ## CamBam
 ### Installation of the Files:
 You will need to work in the C:\ProgramData directory, which is usually hidden.  If you don't see this directory in the File Explorer, you may need to change the folder options for C:\ to "show hidden files, folders, and drives". 
